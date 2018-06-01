@@ -15,6 +15,8 @@ class User(UserMixin, db.Model):
 
 
 class Token(db.Model):
+    __tablename__ = 'tokens'
+
     user_id = db.Column(db.Integer, primary_key=True)
 
     token_type = db.Column(db.String(20))
@@ -35,6 +37,14 @@ class Token(db.Model):
         self.token_type = token.get('token_type', 'bearer')
         self.refresh_token = token.get('refresh_token')
         self.expires_at = token.get('expires_at', 0)
+
+
+class Repo(db.Model):
+    __tablename__ = 'repos'
+
+    repo_id = db.Column(db.Integer, primary_key=True)
+    hook_id = db.Column(db.Integer, nullable=False)
+    last_update = db.Column(db.DateTime)
 
 
 # TODO: Create Webhooks class
