@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}User repos{%endblock%}
+{% block body %}
+<h1>User repos</h1>
+
+{% if repos %}
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  {% for repo in repos %}
+  <tr>
+    <td>{{ repo['name'] }}</td>
+    <td>
+      {% if repo['webhook'] %}
+      remove
+      {% else %}
+      <a href={{ url_for('config_repo', repo_name=repo['name']) }}>configure</a>
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+No valid repositories :(
+(Add a .cpref file on your repository root to turn it valid)
+{% endif %}
+
+{% endblock %}

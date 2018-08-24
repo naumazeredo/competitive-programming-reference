@@ -12,5 +12,6 @@ app.config.from_object(os.environ.get('APP_SETTINGS'))
 oauth = OAuth(app)
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
+login_manager.login_view = "login"
 
 import cpref.views

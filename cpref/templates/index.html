@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 
+{% block title %}Home{%endblock%}
 {% block body %}
   {% if current_user.is_authenticated %}
   <h1>Hello, {{ current_user.login }}</h1>
@@ -8,9 +9,10 @@
   <img src="{{ current_user.avatar_url }}" width="50" height="50">
   {% endif %}
 
+  <a href='{{ url_for('user_repos') }}'>My repos</a>
   <a href='{{ url_for('logout') }}'>Logout</a>
   {% else %}
-  <h1>Hello, stranger!</h1>
+  <h1>Not a user?!</h1>
   <a href='{{ url_for('login') }}'>Login</a>
   {% endif %}
 {% endblock %}

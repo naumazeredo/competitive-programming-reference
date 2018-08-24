@@ -3,17 +3,6 @@ from cpref import oauth, db
 from cpref.models import Token
 
 
-webhook_params = {
-    'name': 'web',
-    'active': True,
-    'events': ['push'],
-    'config': {
-        'url': 'http://92709ba1.ngrok.io/webhook',
-        'content_type': 'json'
-    }
-}
-
-
 def fetch_token():
     user = Token.query.filter_by(user_id=current_user.get_id()).first()
     if not user:
@@ -47,13 +36,13 @@ oauth.register(
     authorize_url='https://github.com/login/oauth/authorize',
     fetch_token=fetch_token,
     update_token=update_token,
-    # client_kwargs={'scope': 'read:user,write:repo_hook'}
     client_kwargs={'scope': 'read:user,write:repo_hook'}
 )
 
 github = oauth.github
 
 
+# TODO: refactor
 def github_get(resource, **kwargs):
     query = resource
     if bool(kwargs):

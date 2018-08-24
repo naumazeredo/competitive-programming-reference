@@ -1,5 +1,9 @@
 # Competitive Programming Reference
 
+Codename: CPZero
+
+
+
 ## To Do List
 
 - [x] GitHub Authentication
@@ -15,6 +19,7 @@
 
 - [ ] Configure repo
   - [x] Find .cpref repos
+  - [ ] Add webhook to repo (use repo.created\_at as initial datetime)
   - [ ] Update repo resolutions
   - [ ] Webhook callback
 

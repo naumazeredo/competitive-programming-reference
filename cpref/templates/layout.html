@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>{% if title %}{{ title }} - {% endif %}CPRef</title>
+    <title>{% block title %}{% endblock %} - CPRef</title>
   </head>
   <body>
     {% block body %}{% endblock %}

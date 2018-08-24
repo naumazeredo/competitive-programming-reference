@@ -42,9 +42,13 @@ class Token(db.Model):
 class Repo(db.Model):
     __tablename__ = 'repos'
 
-    repo_id = db.Column(db.Integer, primary_key=True)
-    hook_id = db.Column(db.Integer, nullable=False)
-    last_update = db.Column(db.DateTime)
+    hook_id = db.Column(db.Integer, nullable=False, primary_key=True)
+    repo_name = db.Column(db.String(80), nullable=False)
+    user_login = db.Column(db.String(80), nullable=False)
+    last_sha = db.Column(db.String(40), nullable=True)
+
+    def __repr__(self):
+        return '<Repo %r>' % self.repo_id
 
 
 # TODO: Create Webhooks class
